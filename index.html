@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Internship Final Showcase — Rafia & Salma</title>
+<meta name="description" content="An interactive internship final showcase." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- Icons (lucide static build, no bundler needed) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="site-nav">
+  <a href="#hero" class="brand">
+    <img src="assets/images/logo.png" alt="" onerror="this.style.display='none'" />
+    <span>Rafia & Salma</span>
+  </a>
+  <div class="nav-links" id="nav-links"></div>
+  <div class="nav-actions">
+    <button id="theme-toggle" aria-label="Toggle dark mode"><i data-lucide="moon"></i></button>
+    <button id="menu-toggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
+  </div>
+</nav>
+<div id="mobile-menu"></div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <canvas id="particles"></canvas>
+    <div class="orb" style="left:-6rem; top:25%; width:18rem; height:18rem; background:rgba(255,166,48,.2);"></div>
+    <div class="orb delay-2" style="right:-4rem; bottom:25%; width:20rem; height:20rem; background:rgba(0,167,225,.2);"></div>
+    <div class="hero-figure-logo" aria-hidden="true"></div>
+
+    <div class="inner">
+      <span class="badge">
+        <img src="assets/images/logo.png" alt="" onerror="this.style.display='none'" />
+        <span id="hero-org-year"></span>
+      </span>
+      <h1>Internship Final<br /><span class="text-gradient-hero">Showcase</span></h1>
+      <p class="lead">An interactive journey through our learnings, innovations, and accomplishments — presented by <strong id="hero-team-name"></strong>.</p>
+
+      <figure class="hero-figure">
+        <div class="tilt" id="hero-tilt">
+          <img src="assets/images/pellets-hands.jpg" alt="Team centerpiece image" width="700" height="350" onerror="this.parentElement.style.minHeight='220px'; this.parentElement.style.background='var(--secondary)'; this.remove();" />
+          <figcaption>
+            <p class="cap-title">Built with care</p>
+            <p class="cap-sub">A showcase of our internship journey</p>
+          </figcaption>
+        </div>
+      </figure>
+
+      <div class="cta-row">
+        <button class="btn btn--primary nav-jump" data-target="about">Begin Presentation</button>
+        <button class="btn btn--ghost nav-jump" data-target="innovation">Jump to Innovation</button>
+      </div>
+
+      <div class="stats" id="hero-stats"></div>
+    </div>
+
+    <button class="scroll-cue nav-jump" data-target="about" aria-label="Scroll down"><i data-lucide="chevron-down"></i></button>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">About Us</span>
+        <h2>Meet the Team</h2>
+        <p id="about-mission"></p>
+      </div>
+
+      <div class="about-photos">
+        <div class="photo-main reveal">
+          <img src="assets/images/qapco-front.jpg" alt="Team / organization photo" width="1280" height="800" onerror="this.style.background='var(--secondary)'; this.removeAttribute('src');" />
+          <div class="overlay"></div>
+          <div class="caption">
+            <p class="name" id="about-team-name"></p>
+            <p style="margin-top:.25rem; font-size:.85rem; opacity:.85;">Internship Cohort · 2026</p>
+          </div>
+        </div>
+        <div class="photo-side reveal" data-delay="120">
+          <img src="assets/images/qapco-sign.jpg" alt="Organization signage" width="686" height="386" onerror="this.style.background='var(--secondary)'; this.removeAttribute('src');" />
+          <div class="overlay"></div>
+          <p class="caption">Where our journey began</p>
+        </div>
+      </div>
+
+      <div class="grid-2" id="team-members"></div>
+
+      <div class="timeline reveal">
+        <h3>Our Internship Journey</h3>
+        <div class="timeline-line"></div>
+        <div id="timeline-stops"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEKLY ============ -->
+  <section id="weekly" class="alt">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Weekly Highlights</span>
+        <h2>Our Weekly Journal</h2>
+        <p>Week by week reflections from both team members — expand any card to read the full entry.</p>
+      </div>
+      <div class="filter-row" id="member-filter"></div>
+      <div class="filter-row" id="week-filter"></div>
+      <div id="week-grid-wrap"></div>
+    </div>
+  </section>
+
+  <!-- ============ INNOVATION ============ -->
+  <section id="innovation" class="bg-mesh">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Innovation Centre</span>
+        <h2>Digital Idea Hub</h2>
+        <p>A consulting-style proposal of ideas to make the organization smarter, faster, and more digital.</p>
+      </div>
+      <div class="grid-4" id="innovation-stats" style="margin-bottom:3rem;"></div>
+      <div class="filter-row" id="innovation-category-filter"></div>
+      <div class="grid-2" id="innovation-cards"></div>
+    </div>
+
+    <div class="modal-overlay" id="innovation-modal">
+      <div class="modal-box" id="innovation-modal-content"></div>
+    </div>
+  </section>
+
+  <!-- ============ CYBER ============ -->
+  <section id="cyber">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Cyber Corner</span>
+        <h2>Security &amp; Cryptography</h2>
+        <p>Concepts we explored, tools we used, and an interactive playground to try ciphers yourself.</p>
+      </div>
+
+      <div class="cyber-grid">
+        <div class="reveal" id="cipher-playground-wrap"></div>
+        <div class="concept-grid" id="cyber-concepts"></div>
+      </div>
+
+      <div class="tips-tools-grid">
+        <div class="panel reveal">
+          <h3>Security Awareness Tips</h3>
+          <ul id="security-tips"></ul>
+        </div>
+        <div class="panel reveal" data-delay="120">
+          <h3>Tools Explored</h3>
+          <div id="cyber-tools"></div>
+        </div>
+      </div>
+
+      <h3 class="ctf-heading reveal">Capture the Flag</h3>
+      <div class="ctf-grid" id="ctf-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ ACTIVITIES ============ -->
+  <section id="activities" class="alt">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Completed Activities</span>
+        <h2>Skills &amp; Accomplishments</h2>
+        <p>A portfolio of what we built, learned, and earned throughout the internship.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="skill-panel reveal">
+          <h3>Technical Skills</h3>
+          <div id="technical-skills"></div>
+          <h3 class="second">Soft Skills</h3>
+          <div id="soft-skills"></div>
+        </div>
+        <div class="radar-panel reveal" data-delay="120">
+          <h3>Skills Radar</h3>
+          <p>A snapshot of our overall competency profile.</p>
+          <canvas id="radar-canvas" width="360" height="320"></canvas>
+        </div>
+      </div>
+
+      <div class="cert-grid" id="certificates"></div>
+
+      <h3 class="projects-heading reveal">Completed Projects</h3>
+      <div class="project-grid" id="projects"></div>
+
+      <h3 class="gallery-heading reveal">Screenshots Gallery</h3>
+      <div class="gallery-grid" id="gallery"></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <button class="close-btn" id="lightbox-close" aria-label="Close"><i data-lucide="x"></i></button>
+      <figure id="lightbox-figure">
+        <img id="lightbox-img" src="" alt="" />
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ CONCLUSION ============ -->
+  <section id="conclusion" class="bg-mesh">
+    <div class="container container--narrow">
+      <div class="intro reveal">
+        <span class="pill pill--secondary eyebrow" style="color:var(--primary); border:1px solid var(--border);">Conclusion</span>
+        <h2>Thank You <span class="text-gradient-hero">for an Amazing Journey</span></h2>
+        <p class="summary-text" id="conclusion-summary"></p>
+      </div>
+
+      <div class="grid-4 conclusion-stats" id="conclusion-stats"></div>
+
+      <div class="takeaway-grid" id="takeaways"></div>
+
+      <div class="appreciation-card glass shadow-elegant reveal">
+        <div class="seal">
+          <img src="assets/images/logo.png" alt="" onerror="this.style.display='none'" />
+        </div>
+        <p class="quote">“<span id="appreciation-text"></span>”</p>
+        <div class="signatures" id="signatures"></div>
+        <p class="footer-line" id="conclusion-footer"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p id="site-footer-text"></p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
