@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whisperly ✦</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blush: #f7e8e8;
+    --rose: #e8c4c4;
+    --deep-rose: #c47a7a;
+    --mauve: #a85f7a;
+    --ink: #2a1a2e;
+    --ink-soft: #5c4a60;
+    --ink-muted: #9c8aa0;
+    --cream: #fdf6f0;
+    --white: #ffffff;
+    --radius: 16px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .logo-mark {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+    letter-spacing: -1px;
+  }
+
+  .site-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--ink);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .site-name span {
+    color: var(--mauve);
+    font-style: italic;
+  }
+
+  .tagline {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-top: 8px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+
+  .pill-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    background: var(--blush);
+    color: var(--mauve);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border-radius: 99px;
+    border: 1px solid var(--rose);
+    text-transform: uppercase;
+  }
+
+  main {
+    width: 100%;
+    max-width: 560px;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--rose);
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(168, 95, 122, 0.07);
+  }
+
+  .tab-row {
+    display: flex;
+    background: var(--blush);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 1.75rem;
+  }
+
+  .tab {
+    flex: 1;
+    height: 38px;
+    border: none;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--ink-muted);
+    transition: all 0.18s;
+  }
+
+  .tab.active {
+    background: var(--white);
+    color: var(--mauve);
+    box-shadow: 0 1px 6px rgba(168, 95, 122, 0.14);
+  }
+
+  .field-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1.5px solid var(--rose);
+    border-radius: 12px;
+    outline: none;
+    line-height: 1.65;
+    transition: border-color 0.15s;
+  }
+
+  textarea:focus {
+    border-color: var(--deep-rose);
+  }
+
+  textarea[readonly] {
+    background: var(--blush);
+    color: var(--ink-soft);
+    cursor: default;
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .btn-primary {
+    flex: 1;
+    height: 46px;
+    background: var(--mauve);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-ghost {
+    height: 46px;
+    padding: 0 18px;
+    background: transparent;
+    color: var(--ink-muted);
+    border: 1.5px solid var(--rose);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .btn-ghost:hover {
+    background: var(--blush);
+    color: var(--mauve);
+  }
+
+  .output-area { margin-top: 1.5rem; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--blush);
+    margin: 1.5rem 0;
+  }
+
+  .steps-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .step-arrow {
+    color: var(--rose);
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .step-tag {
+    font-family: 'DM Serif Display', serif;
+    font-size: 12px;
+    background: var(--blush);
+    color: var(--deep-rose);
+    border-radius: 6px;
+    padding: 1px 7px;
+  }
+
+  .copy-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .btn-copy {
+    background: none;
+    border: 1px solid var(--rose);
+    border-radius: 8px;
+    padding: 5px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-copy:hover { background: var(--blush); color: var(--mauve); }
+
+  .error-msg {
+    font-size: 13px;
+    color: #c0504a;
+    margin-top: 10px;
+    background: #fdf0f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #f0cece;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-muted);
+    padding-bottom: 2rem;
+    letter-spacing: 0.03em;
+  }
+
+  footer span { color: var(--mauve); }
+
+  @media (max-width: 480px) {
+    .site-name { font-size: 34px; }
+    main { padding: 1rem 1rem 3rem; }
+    .card { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo-mark">🤫</span>
+  <h1 class="site-name">Whisper<span>ly</span></h1>
+  <p class="tagline">your little secret encoder</p>
+  <div class="pill-row">
+    <span class="pill">swap first & last</span>
+    <span class="pill">ascii middle</span>
+    <span class="pill">+2005 key</span>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="tab-row">
+      <button class="tab active" onclick="switchTab('encrypt')" id="tab-encrypt">🔒 Encrypt</button>
+      <button class="tab" onclick="switchTab('decrypt')" id="tab-decrypt">🔓 Decrypt</button>
+    </div>
+
+    <label class="field-label" id="input-label">Your message</label>
+    <textarea id="input" placeholder="Type something sweet…" oninput="run()"></textarea>
+
+    <div class="btn-row">
+      <button class="btn-primary" onclick="run()">
+        <span id="btn-icon">✦</span>
+        <span id="btn-label">Encrypt it</span>
+      </button>
+      <button class="btn-ghost" onclick="clearAll()">Clear</button>
+    </div>
+
+    <div id="error-msg" class="error-msg" style="display:none"></div>
+
+    <div class="output-area" id="output-area" style="display:none">
+      <label class="field-label" id="output-label">Result</label>
+      <textarea id="output" readonly></textarea>
+      <div class="copy-row">
+        <button class="btn-copy" onclick="copyOut()" id="copy-btn">Copy ✦</button>
+      </div>
+
+      <hr class="divider">
+
+      <p class="steps-title">How it happened</p>
+      <div id="steps"></div>
+    </div>
+  </div>
+</main>
+
+<footer>made with ♡ · key <span>+2005</span></footer>
+
+<script>
+let mode = 'encrypt';
+
+function switchTab(m) {
+  mode = m;
+  document.getElementById('tab-encrypt').classList.toggle('active', m === 'encrypt');
+  document.getElementById('tab-decrypt').classList.toggle('active', m === 'decrypt');
+  document.getElementById('input-label').textContent = m === 'encrypt' ? 'Your message' : 'Cipher text';
+  document.getElementById('output-label').textContent = m === 'encrypt' ? 'Encrypted' : 'Decrypted';
+  document.getElementById('btn-label').textContent = m === 'encrypt' ? 'Encrypt it' : 'Decrypt it';
+  document.getElementById('btn-icon').textContent = m === 'encrypt' ? '✦' : '✧';
+  document.getElementById('input').placeholder = m === 'encrypt' ? 'Type something sweet…' : 'Paste your cipher…';
+  document.getElementById('input').value = '';
+  document.getElementById('output-area').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+  document.getElementById('steps').innerHTML = '';
+}
+
+function encryptWord(word) {
+  if (word.length <= 1) return { result: word, steps: [] };
+  if (word.length === 2) return { result: word[1] + word[0], steps: [`swapped 2-letter word`] };
+  const first = word[0], last = word[word.length - 1];
+  const middle = word.slice(1, -1);
+  let enc = '', stepDetails = [];
+  for (const ch of middle) {
+    const base = /[a-zA-Z]/.test(ch) ? ch.toUpperCase() : ch;
+    const val = base.charCodeAt(0) + 2005;
+    enc += val;
+    stepDetails.push(`'${ch}' → ${base.charCodeAt(0)} + 2005 = ${val}`);
+  }
+  return { result: last + enc + first, steps: stepDetails };
+}
+
+function decryptWord(word) {
+  if (word.length <= 1) return { result: word, steps: [] };
+  if (word.length === 2) return { result: word[1] + word[0], steps: [] };
+  const orig_first = word[word.length - 1];
+  const orig_last = word[0];
+  const mid = word.slice(1, -1);
+  let dec = '', i = 0, stepDetails = [], ok = true;
+  while (i < mid.length) {
+    let found = false;
+    for (let len = 4; len >= 2; len--) {
+      const chunk = mid.slice(i, i + len);
+      if (chunk.length < 2 || !/^\d+$/.test(chunk)) continue;
+      const val = parseInt(chunk);
+      const ascii = val - 2005;
+      if (ascii >= 32 && ascii <= 126) {
+        const ch = String.fromCharCode(ascii);
+        const out = (ascii >= 65 && ascii <= 90) ? ch.toLowerCase() : ch;
+        stepDetails.push(`${val} − 2005 = ${ascii} → '${out}'`);
+        dec += out;
+        i += len;
+        found = true;
+        break;
+      }
+    }
+    if (!found) { ok = false; break; }
+  }
+  if (!ok) return { result: null, steps: [] };
+  return { result: orig_first + dec + orig_last, steps: stepDetails };
+}
+
+function run() {
+  const raw = document.getElementById('input').value.trim();
+  const errEl = document.getElementById('error-msg');
+  const outArea = document.getElementById('output-area');
+  const stepsEl = document.getElementById('steps');
+
+  if (!raw) { outArea.style.display = 'none'; errEl.style.display = 'none'; return; }
+
+  const tokens = raw.split(/(\s+)/);
+  let resultParts = [], allSteps = [];
+
+  for (const token of tokens) {
+    if (/^\s+$/.test(token)) { resultParts.push(token); continue; }
+    const fn = mode === 'encrypt' ? encryptWord : decryptWord;
+    const { result, steps } = fn(token);
+    if (result === null) {
+      errEl.textContent = `Couldn't decode "${token}" — are you sure it's a Whisperly cipher?`;
+      errEl.style.display = 'block';
+      outArea.style.display = 'none';
+      return;
+    }
+    resultParts.push(result);
+    if (steps.length) allSteps.push({ word: token, steps });
+  }
+
+  errEl.style.display = 'none';
+  document.getElementById('output').value = resultParts.join('');
+  outArea.style.display = 'block';
+
+  let html = '';
+  const show = allSteps.slice(0, 3);
+  for (const { word, steps } of show) {
+    html += `<div style="margin-bottom:14px">
+      <div style="font-size:12px;font-weight:500;color:var(--deep-rose);margin-bottom:6px;font-family:'DM Serif Display',serif">${word}</div>`;
+    for (const s of steps) {
+      html += `<div class="step-item"><span class="step-arrow">→</span><span class="step-tag">${s}</span></div>`;
+    }
+    html += '</div>';
+  }
+  if (allSteps.length > 3) {
+    html += `<div style="font-size:12px;color:var(--ink-muted)">+ ${allSteps.length - 3} more words…</div>`;
+  }
+  stepsEl.innerHTML = html;
+}
+
+function clearAll() {
+  document.getElementById('input').value = '';
+  document.getElementById('output-area').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+  document.getElementById('steps').innerHTML = '';
+}
+
+function copyOut() {
+  const val = document.getElementById('output').value;
+  navigator.clipboard.writeText(val).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => btn.textContent = 'Copy ✦', 1500);
+  });
+}
+</script>
+</body>
+</html>
