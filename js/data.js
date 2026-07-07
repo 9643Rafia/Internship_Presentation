@@ -49,9 +49,9 @@ export const teamMembers = [
 ];
 
 export const internshipTimeline = [
-  { period: "Week 1", title: "Onboarding & Discovery", description: "Met the team, set up our environment, and mapped out internship goals.", icon: "compass" },
-  { period: "Week 2", title: "Hands-on Learning", description: "Dove into core tools, shadowed mentors, and shipped our first small tasks.", icon: "book-open" },
-  { period: "Week 3", title: "Building & Innovating", description: "Prototyped automation ideas and explored cybersecurity concepts in depth.", icon: "hammer" },
+  { period: "Week 1", title: "IT Week", description: "Started with introductions and internship goals, then explored IT Operations, Database Management Systems, IT Business Solutions, Project Management, and Microsoft SharePoint.", icon: "compass" },
+  { period: "Week 2", title: "Digital Week", description: "Explored the Digital Department through sessions on the Digital Catalyst Program, Data & Analytics, Value Realization, Change Management, and concluded with a Digital Idea presentation.", icon: "book-open" },
+  { period: "Week 3", title: "Cyber Security Week", description: "Learned cybersecurity fundamentals through sessions on network security, cyber threats, data protection, VAPT, email security, and enterprise security tools, culminating in designing and implementing a custom cipher.", icon: "hammer" },
   { period: "Week 4", title: "Delivery & Reflection", description: "Polished deliverables, documented learnings, and prepared this showcase.", icon: "flag" },
 ];
 
@@ -140,9 +140,15 @@ export const skillRadar = [
 ];
 
 export const projects = [
-  { title: "Automated Weekly Report", description: "A Python pipeline that compiles and emails stakeholder reports automatically.", tags: ["Python", "Automation", "APIs"], icon: "file-bar-chart", highlights: ["Saved ~2 hours/week", "Zero manual errors", "Configurable templates"] },
-  { title: "Internal UI Component Library", description: "Reusable, typed React components adopted across internal tools.", tags: ["React", "TypeScript", "Tailwind"], icon: "component", highlights: ["3 tools adopted it", "Consistent design", "Faster delivery"] },
-  { title: "Security Awareness Toolkit", description: "Onboarding checklist and phishing-awareness materials for new hires.", tags: ["Security", "Documentation"], icon: "shield-check", highlights: ["Reused for onboarding", "Clear checklists", "Team workshop"] },
+  { title: "Event Management Platform", description: "web based platform designe to simplify the planning and management of events.", tags: ["Python", "Automation", "APIs"], icon: "file-bar-chart", highlights: ["Saved ~2 hours/week", "Zero manual errors", "Configurable templates"] },
+  { title: "Digital Implementation",
+    description: "Developed a digital solution to address a key industry pain point, applying digital transformation principles and presenting the proposed implementation.",
+    tags: ["Digital Transformation", "Innovation", "Problem Solving"], icon: "component", highlights: ["Identified a real-world challenge",
+    "Designed a practical digital solution",
+    "Presented the implementation proposal"] },
+  { title: "Custom Cipher Creation",
+    description: "Designed and implemented a custom encryption cipher with both encryption and decryption functionality as part of a cybersecurity assignment.",
+    tags: ["CyberSecurity", "Python"],icon: "shield-check", highlights: ["Designed custom algorithm", "Implemented encryption & decryption", "Tested with sample messages"] },
 ];
 
 export const certificates = [
@@ -161,10 +167,10 @@ export const gallery = [
 
 // ---------- CONCLUSION ----------
 export const conclusionStats = [
-  { label: "Weeks Completed", value: 10, suffix: "" },
+  { label: "Weeks Completed", value: 4, suffix: "" },
   { label: "Projects Delivered", value: 3, suffix: "" },
-  { label: "Skills Gained", value: 12, suffix: "+" },
-  { label: "Hours of Learning", value: 400, suffix: "+" },
+  { label: "Skills Gained", value: 5, suffix: "+" },
+  { label: "Hours of Learning", value: 60, suffix: "+" },
 ];
 
 export const summary =
