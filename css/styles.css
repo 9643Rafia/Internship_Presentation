@@ -258,16 +258,16 @@ section.alt { background: color-mix(in srgb, var(--secondary) 30%, transparent);
 /* ---------- About ---------- */
 .about-photos { display: grid; gap: 1.5rem; margin-bottom: 4rem; }
 @media (min-width: 768px) { .about-photos { grid-template-columns: repeat(5, 1fr); } }
-.about-photos .photo-main { grid-column: span 3; position: relative; border-radius: 1.75rem; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-elegant); }
+.about-photos .photo-main { grid-column: span 5 /*from span 3 to span5*/; position: relative; border-radius: 1.75rem; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-elegant); }
 .about-photos .photo-main img { height: 280px; width: 100%; object-fit: cover; }
 @media (min-width: 640px) { .about-photos .photo-main img { height: 420px; } }
 .about-photos .photo-main .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7), transparent 60%); }
 .about-photos .photo-main .caption { position: absolute; bottom: 0; left: 0; padding: 2rem; color: #fff; }
 .about-photos .photo-main .caption .name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; }
-.about-photos .photo-side { grid-column: span 2; position: relative; border-radius: 1.75rem; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-elegant); min-height: 220px; }
+/*.about-photos .photo-side { grid-column: span 2; position: relative; border-radius: 1.75rem; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-elegant); min-height: 220px; }
 .about-photos .photo-side img { height: 100%; width: 100%; object-fit: cover; }
 .about-photos .photo-side .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.6), transparent); }
-.about-photos .photo-side .caption { position: absolute; bottom: 1rem; left: 1.25rem; color: #fff; font-weight: 600; font-size: .9rem; }
+.about-photos .photo-side .caption { position: absolute; bottom: 1rem; left: 1.25rem; color: #fff; font-weight: 600; font-size: .9rem; }*/
 
 .member-card { position: relative; overflow: hidden; border-radius: 1.75rem; padding: 2rem; }
 .member-card .head { display: flex; align-items: center; gap: 1rem; }
